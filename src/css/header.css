@@ -1,0 +1,54 @@
+/* Styles for Mobile devices */
+
+.header-logo {
+  padding: 8px 0 10px 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-nav-list {
+  display: none;
+}
+
+.burger-btn {
+  border: none;
+  background-color: transparent;
+  padding: 12px;
+}
+
+.burger-btn-icon {
+  display: block;
+  fill: var(--color-scheme-1-text);
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+
+  .burger-btn {
+    display: none;
+  }
+
+  .header-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .header-nav-link {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 24px 0;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  .header-nav-link:hover,
+  .header-nav-link:focus {
+    opacity: 0.5;
+  }
+}
