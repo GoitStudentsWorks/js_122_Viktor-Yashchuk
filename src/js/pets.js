@@ -1,9 +1,5 @@
 import axios from 'axios';
-
-const refs = {
-  ctgsList: document.querySelector('.pets-ctgs-list'),
-  petsList: document.querySelector('.pets-list'),
-};
+import { refs } from './refs.js';
 
 //get categories
 let ctgs = await axios('https://paw-hut.b.goit.study/api/categories');
@@ -34,17 +30,17 @@ const renderPets = arr =>
     .map(
       el => `<li class="pets-item">
     <img class="pets-img" src="${el.image}" alt="${el.species}">
-    <p class="pets-class">${el.species}</p>
+    <p class="pets-species">${el.species}</p>
     <h3 class="pets-name">${el.name}</h3>
-    <ul class="pets-own-ctgs-list>${el.categories
-      .map(el => `<p class="pets-own-ctgs-item">${el.name}</p>`)
+    <ul class="pets-own-ctgs-list">${el.categories
+      .map(el => `<li class="pets-own-ctgs-item"><p>${el.name}</p></li>`)
       .join('')}</ul>
-    <div class="pets-info>
-    <p class="pets-age>${el.age}</p>
-    <p class="pets-gender>${el.gender}</p>
+    <div class="pets-info">
+    <p>${el.age}</p>
+    <p>${el.gender}</p>
     </div>
     <p class="pets-behavior">${el.behavior}</p>
-    <button class="pets-modal-open" type="submit">Дізнатись більше</button>
+    <button class="pets-modal-btn" type="submit">Дізнатись більше</button>
 </li>`
     )
     .join('');
