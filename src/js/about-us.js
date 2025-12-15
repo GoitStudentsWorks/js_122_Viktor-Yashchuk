@@ -115,18 +115,39 @@ const swiper = new Swiper('.about-mySwiper', {
   },
 });
 
-swiper.on('slideChange', () => {
+const updateNavigationState = () => {
   if (swiper.isEnd) {
     aboutBtnForward.classList.add('about-btn-disabled');
   } else {
     aboutBtnForward.classList.remove('about-btn-disabled');
   }
-});
-
-swiper.on('slideChange', () => {
   if (swiper.isBeginning) {
     aboutBtnBack.classList.add('about-btn-disabled');
   } else {
     aboutBtnBack.classList.remove('about-btn-disabled');
   }
+};
+swiper.on('slideChange', updateNavigationState);
+updateNavigationState();
+
+// const animationEl = document.querySelectorAll('.about-id');
+
+// if()
+
+swiper.on('slideChangeTransitionStart', () => {
+  document.querySelectorAll('.about-id').forEach(el => {
+    el.classList.remove('show');
+  });
 });
+swiper.on('slideChangeTransitionEnd', () => {
+  const activeSlide = swiper.slides[swiper.activeIndex];
+  const text = activeSlide.querySelector('.about-id');
+  if (text) {
+    text.classList.add('show');
+  }
+});
+
+const firstText = swiper.slides[swiper.activeIndex].querySelector('.about-id');
+if (firstText) {
+  firstText.classList.add('show');
+}
