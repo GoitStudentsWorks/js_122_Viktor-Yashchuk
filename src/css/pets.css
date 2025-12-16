@@ -1,3 +1,5 @@
+/* loader */
+
 .pets-loader {
   width: 100px;
   height: 100px;
@@ -30,6 +32,77 @@
     transform: scale(1);
     opacity: 0;
   }
+}
+
+/* pagination */
+
+.container .tui-pagination {
+  display: none;
+  margin: 40px auto 42px auto;
+  height: 48px;
+
+  justify-content: center;
+  gap: 4px;
+}
+
+.pets-section .container > .tui-pagination .tui-page-btn {
+  padding: 12px 0;
+  height: 100%;
+  width: 58px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  color: var(--color-neutral-darkest);
+  line-height: 1.5;
+
+  transition: border 250ms ease-in-out;
+}
+
+.container .tui-pagination .tui-page-btn.tui-first,
+.container .tui-pagination .tui-page-btn.tui-last {
+  display: none;
+}
+
+.pets-section .container > .tui-pagination .tui-page-btn:hover,
+.pets-section .container > .tui-pagination .tui-page-btn:focus {
+  border: 1px solid var(--color-neutral-light);
+}
+
+.container .tui-pagination .tui-page-btn.tui-is-selected {
+  border: 1px solid var(--color-neutral-light);
+  background-color: transparent;
+}
+
+.container > .tui-pagination .tui-page-btn.tui-prev,
+.container > .tui-pagination .tui-page-btn.tui-next {
+  margin: 0;
+  width: 48px;
+  border: 1px solid var(--color-mariner);
+  background-color: var(--color-mariner-lighter);
+
+  transition: border-color 250ms ease-in-out;
+}
+
+.container > .tui-pagination .tui-page-btn.tui-prev:hover,
+.container > .tui-pagination .tui-page-btn.tui-next:hover,
+.container > .tui-pagination .tui-page-btn.tui-prev:focus,
+.container > .tui-pagination .tui-page-btn.tui-prev:focus {
+  border-color: var(--opacity-neutral-darkest-60);
+}
+
+.container > .tui-pagination .tui-page-btn.tui-is-disabled {
+  opacity: 0.4;
+}
+
+.container .tui-pagination .tui-ico-ellip {
+  margin: 0;
+  line-height: inherit;
+  align-self: end;
+  margin-bottom: 8px;
 }
 
 /* mobile */
