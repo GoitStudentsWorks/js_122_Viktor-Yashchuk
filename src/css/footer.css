@@ -1,5 +1,6 @@
 .footer {
   background-color: var(--color-mariner);
+  min-width: 320px;
 }
 
 .footer-container {
@@ -69,6 +70,12 @@
   justify-content: center;
   width: 32px;
   height: 32px;
+  transition: all 250ms ease-in-out;
+}
+
+.footer-social-item:hover {
+  fill: var(--color-mariner-dark);
+  scale: 1.2;
 }
 
 .footer-social-list-icon {
