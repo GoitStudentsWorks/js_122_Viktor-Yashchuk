@@ -12,6 +12,7 @@
         class="footer__logo-img"
         width="302"
         height="129"
+        loading="lazy"
       />
     </a>
 
@@ -25,7 +26,7 @@
       </ul>
     </nav>
 
-    <!-- СОЦСЕТИ  -->
+    <!-- СОЦСЕТИ -->
     <ul class="footer__social" aria-label="Соціальні мережі">
       <li>
         <a
@@ -35,11 +36,12 @@
           rel="noopener noreferrer"
           aria-label="Facebook"
         >
-          <svg width="24" height="24" aria-hidden="true">
+          <svg class="footer__social-icon" aria-hidden="true">
             <use href="./img/sprite.svg#icon-facebook"></use>
           </svg>
         </a>
       </li>
+
       <li>
         <a
           class="footer__social-link"
@@ -48,17 +50,15 @@
           rel="noopener noreferrer"
           aria-label="Instagram"
         >
-          <svg width="24" height="24" aria-hidden="true">
+          <svg class="footer__social-icon" aria-hidden="true">
             <use href="./img/sprite.svg#icon-instagram"></use>
           </svg>
         </a>
       </li>
     </ul>
-  </div>
 
-  <div class="footer__bottom">
-    <div class="container footer__bottom-container">
-      <p class="footer__copyright">© 2025 Хатинка лапок. Всі права захищені.</p>
-    </div>
+    <span class="footer__divider" aria-hidden="true"></span>
+
+    <p class="footer__copyright">© 2025 Хатинка лапок. Всі права захищені.</p>
   </div>
 </footer>
