@@ -94,6 +94,7 @@
 .pets-pagination li .pagination-btn-arrow:disabled {
   border-color: transparent;
   opacity: 0.4;
+  pointer-events: none;
 }
 
 .pets-pagination li .pagination-btn-arrow:disabled:active {
