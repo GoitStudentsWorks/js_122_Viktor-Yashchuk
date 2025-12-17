@@ -48,6 +48,8 @@ overflow-y: auto;
 background-color: var(--color-mariner-lightest);
 transform: translate(-50%, -50%);
 transition: transform 250ms ease-in-out;
+
+ overflow-y: auto;
 } 
 
 .order-modal-title {
@@ -68,6 +70,10 @@ cursor: pointer;
 transition: background-color 250ms ease-in-out,
 border 250ms ease-in-out;
 }
+
+.no-scroll {
+  overflow: hidden;
+} 
 
 .order-modal-form {
 width: 100%;
