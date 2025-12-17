@@ -159,7 +159,7 @@ const renderCtgs = arr => {
   return arr
     .map(
       el =>
-        `<li class="pets-ctgs-item"><button class="pets-ctgs-btn" data-id="${el._id}" type="button">${el.name}</button></li>`
+        `<li class="pets-ctgs-item"><button class="pets-ctgs-btn" aria-pressed="false" data-id="${el._id}" type="button">${el.name}</button></li>`
     )
     .join('');
 };
@@ -173,6 +173,7 @@ const initCtgs = async () => {
     const firstBtn = document.querySelector('.pets-ctgs-btn');
     firstBtn.classList.add('active');
     firstBtn.dataset.id = 'all';
+    firstBtn.setAttribute('aria-pressed', 'true');
   } catch (err) {
     toastError(err.message);
   }
@@ -238,8 +239,12 @@ const clearPets = () => (refs.petsList.innerHTML = '');
 
 const changeActiveCtg = btn => {
   const allBtns = document.querySelectorAll('.pets-ctgs-btn');
-  allBtns.forEach(el => el.classList.remove('active'));
+  allBtns.forEach(el => {
+    el.classList.remove('active');
+    el.setAttribute('aria-pressed', 'false');
+  });
   btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
 };
 
 //category switch
