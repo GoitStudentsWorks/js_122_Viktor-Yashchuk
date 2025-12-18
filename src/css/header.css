@@ -43,7 +43,7 @@
 }
 
 .top-line {
-  transform: rotate(-315deg) translateY(7px);
+  transform: rotate(-315deg) translate(4px, 3px);
 }
 
 .mid-line {
@@ -51,7 +51,7 @@
 }
 
 .bot-line {
-  transform: rotate(315deg) translateY(-7px);
+  transform: rotate(315deg) translate(4px, -3px);
 }
 
 .mobile-burger-menu-line:first-child {
