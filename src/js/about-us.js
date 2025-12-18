@@ -3,6 +3,7 @@ import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { BASE } from './config';
 
 const aboutBtnForward = document.querySelector('.about-swiper-button-next');
 const aboutBtnBack = document.querySelector('.about-swiper-button-prev');
@@ -34,8 +35,6 @@ const data = [
       'Ваша допомога — безцінна. Ви можете взяти тваринку додому, стати волонтером, допомогти фінансово або інформаційно. Кожен маленький внесок наближає нас до великої мети — світу без безпритульних тварин.',
   },
 ];
-
-const BASE = import.meta.env.BASE_URL;
 
 const aboutRender = data.map(({ id, description }) => {
   return `<div class="swiper-slide about-slide">
