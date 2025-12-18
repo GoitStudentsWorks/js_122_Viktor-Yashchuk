@@ -108,7 +108,7 @@
   transition: background-color 250ms ease-in-out, font-weight 250ms ease-in-out,
     border 250ms ease-in-out;
 
-  padding: 10px 16px;
+  padding: 9px 16px;
 }
 
 .pets-ctgs-btn.active {
@@ -167,14 +167,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+  height: 46px;
 
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .pets-own-ctgs-item {
   border-radius: 100px;
   padding: 4px 10px;
   background-color: var(--opacity-neutral-darkest-5);
+
+  max-height: 23px;
 }
 
 .pets-own-ctgs-item p {
@@ -186,16 +189,15 @@
 .pets-info {
   display: flex;
   gap: 16px;
-}
-
-.pets-info p {
-  font-size: 10px;
-  line-height: 1.5;
 
   margin-bottom: 16px;
 }
 
-.pets-behavior {
+.pets-info p {
+  font-size: 10px;
+}
+
+.pets-short-desc {
   font-size: 12px;
   line-height: 1.5;
 
@@ -211,6 +213,7 @@
   font-size: 14px;
   line-height: 1.5;
   padding: 10px 0;
+  margin: auto auto 0;
 
   transition: background-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
 }
@@ -267,6 +270,10 @@
     justify-content: space-between;
     width: calc((100% - 32px) / 2);
   }
+
+  .pets-own-ctgs-list {
+    height: 50px;
+  }
 }
 
 /* desktop */
@@ -303,6 +310,10 @@
     font-size: 24px;
   }
 
+  .pets-own-ctgs-item {
+    max-height: 26px;
+  }
+
   .pets-own-ctgs-item p {
     font-size: 12px;
   }
@@ -311,7 +322,7 @@
     font-size: 12px;
   }
 
-  .pets-behavior {
+  .pets-short-desc {
     font-size: 14px;
   }
 
@@ -321,5 +332,9 @@
 
   .pets-ctgs-btn {
     font-size: 16px;
+  }
+
+  .pets-own-ctgs-list {
+    height: 60px;
   }
 }

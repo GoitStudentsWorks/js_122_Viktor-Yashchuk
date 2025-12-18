@@ -156,6 +156,19 @@ const getCtgs = async () =>
 const renderCtgs = arr => {
   arr.unshift({ name: 'Всі' });
 
+  const order = [
+    'Всі',
+    'Собаки',
+    'Коти',
+    'Кролики',
+    'Гризуни',
+    'Птахи',
+    'Тварини з особливими потребами',
+    'Терміново шукають дім',
+  ];
+
+  arr.sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
+
   return arr
     .map(
       el =>
@@ -194,18 +207,18 @@ const renderPets = arr =>
   arr
     .map(
       el => `<li class="pets-item" role="listitem">
-    <div><img class="pets-img" src="${el.image}" alt="${el.species}">
+    <img class="pets-img" src="${el.image}" alt="${el.species}">
     <p class="pets-species">${el.species}</p>
     <h3 class="pets-name">${el.name}</h3>
     <ul class="pets-own-ctgs-list">${el.categories
       .map(el => `<li class="pets-own-ctgs-item"><p>${el.name}</p></li>`)
-      .join('')}</ul></div>
-    <div><div class="pets-info">
-    <p>${el.age}</p>
-    <p>${el.gender}</p>
-    </div>
-    <p class="pets-behavior">${el.behavior}</p>
-    <button class="pets-modal-btn" type="submit">Дізнатись більше</button></div>
+      .join('')}</ul>
+    <ul class="pets-info">
+    <li><p>${el.age}</p></li>
+    <li><p>${el.gender}</p></li>
+    </ul>
+    <p class="pets-short-desc">${el.shortDescription}</p>
+    <button class="pets-modal-btn" type="submit">Дізнатись більше</button>
 </li>`
     )
     .join('');
