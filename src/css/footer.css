@@ -12,6 +12,12 @@
 
 .footer-logo {
   margin-bottom: 50px;
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+}
+
+.footer-logo:active {
+  transform: scale(1.04);
+  opacity: 0.4;
 }
 
 .footer-nav-list {
