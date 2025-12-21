@@ -8,4 +8,5 @@ export const refs = {
   petsLoadBtn: document.querySelector('.pets-load-btn'),
   petsLoader: document.querySelector('.pets-loader'),
   petsPagination: document.querySelector('.pets-pagination'),
+  faqListEl: document.querySelector('#faqList'),
 };
