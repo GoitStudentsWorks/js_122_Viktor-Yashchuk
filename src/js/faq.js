@@ -1,7 +1,7 @@
 import Accordion from 'accordion-js';
 import { refs } from './refs';
 import { BASE } from './config';
-//!░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒
+
 const faqData = [
   {
     q: 'Я мрію про пухнастика! Що мені потрібно зробити, щоб забрати хвостика додому?',
@@ -98,72 +98,48 @@ const getListClass = type => (type === 'ol' ? 'ac-text-list faq-list' : 'ac-text
 
 const renderBlock = block => {
   if (block.type === 'p') {
-    return `<p class="faq-text ac-text">${block.text}</p>`;
+    return `<p>${block.text}</p>`;
   }
+
   if (block.type === 'ol' || block.type === 'ul') {
     const items = block.items ?? [];
-    const itemsHtml = items.map(text => `<li class="faq-list-item ac-list-item">
-          <p class="faq-list-text">${text}</p>
-        </li>`).join('');
-    return `<${block.type} class="${getListClass(block.type)}">${itemsHtml}</${block.type}>`;
+    const itemsHtml = items.map(text => `<li>${text}</li>`).join('');
+    return `<${block.type}>${itemsHtml}</${block.type}>`;
   }
+
   return '';
 };
 
-const renderFaqItem = ({ q, blocks = [] }) => `<li class="faq-accordion ac">
-      <h3 class="faq-header ac-header">
-        <button class="faq-trigger ac-trigger" type="button">
-          <span class="faq-trigger-text ac-trigger-text">${q}</span>
-          <span class="ac-trigger-icon">
-            <svg class="faq-svg" aria-hidden="true" width="24" height="24">
-              <use href="${BASE}public/sprite.svg#icon-add"></use>
-            </svg>
-          </span>
-        </button>
-      </h3>
-      <div class="faq-panel ac-panel">
-        <div class="faq-form ac-form">
-          ${blocks.map(renderBlock).join('')}
-        </div>
+const renderFaqItem = ({ q, blocks = [] }) => `
+  <li class="ac">
+    <h3 class="ac-header">
+      <button class="ac-trigger" type="button">
+        <span class="faq-question">${q}</span>
+        <span class="faq-icon">
+          <svg aria-hidden="true" width="24" height="24">
+            <use href="${BASE}public/sprite.svg#icon-add"></use>
+          </svg>
+        </span>
+      </button>
+    </h3>
+
+    <div class="ac-panel">
+      <div class="faq-content">
+        ${blocks.map(renderBlock).join('')}
       </div>
-    </li>
-  `;
+    </div>
+  </li>
+`;
 
 refs.faqListEl.innerHTML = faqData.map(renderFaqItem).join('');
 
 new Accordion('.accordion-container', {
-  duration: 250,
+  duration: 1000,
   showMultiple: false,
   collapse: true,
   ariaEnabled: true,
 });
 
-
-//!░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒
-// const openAccordion = element => {
-//   element.classList.add('open');
-//   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-// };
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   new Accordion('.accordion-container', {
-//     duration: 250,
-//     showMultiple: false,
-//     collapse: true,
-//     ariaEnabled: true,
-//   });
-// });
-
-document.addEventListener('click', e => {
-  const trigger = e.target.closest('.ac-trigger');
-  if (trigger) {
-    setTimeout(() => {
-      if (window.innerWidth < 375) {
-        trigger.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 450);
-  }
-});
 
 const faqAnim = document.querySelector('.faq-ajax-loader');
 const total = 30;
