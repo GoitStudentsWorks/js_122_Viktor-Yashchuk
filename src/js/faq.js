@@ -26,7 +26,7 @@ document.addEventListener('click', e => {
 });
 
 const faqAnim = document.querySelector('.faq-ajax-loader');
-const total = 30;
+const total = 20;
 
 for (let i = 0; i < total; i++) {
   const paw = document.createElement('div');
