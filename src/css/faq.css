@@ -40,7 +40,6 @@
   color: inherit;
   line-height: 0.5;
   transition: background-color 500ms ease-in-out, transform 500ms ease-in-out;
-  width: clamp(280px, calc(100vw - 40px), 335px);
 }
 
 .ac-trigger:hover {
