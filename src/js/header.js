@@ -80,17 +80,18 @@ let isScrollingByClick = false;
 let scrollTargetId = null;
 
 const resetLinks = () => {
-  headerLinks.forEach(l => {
-    l.classList.remove('is-active', 'is-inactive');
+  headerLinks.forEach(link => {
+    link.classList.remove('is-active', 'is-inactive');
   });
   activeLink = null;
 };
 
 const activateLink = link => {
-  if (activeLink === link) return;
-  resetLinks();
-  activeLink = link;
+  headerLinks.forEach(l => {
+    l.classList.remove('is-active', 'is-inactive');
+  });
   link.classList.add('is-active');
+  activeLink = link;
 };
 
 const handleClickLink = link => {
@@ -100,14 +101,14 @@ const handleClickLink = link => {
   const targetSection = document.getElementById(targetId);
   if (!targetSection) return;
 
-  if (activeLink?.getAttribute('href') === `#${targetId}`) {
-    isScrollingByClick = true;
-    scrollTargetId = targetId;
+  const isSameSection = activeLink?.getAttribute('href') === `#${targetId}`;
 
+  if (isSameSection) {
     targetSection.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     });
+    link.blur();
     return;
   }
 
@@ -119,23 +120,22 @@ const handleClickLink = link => {
   );
 
   if (headerLink) {
-    activateLink(headerLink);
     headerLinks.forEach(l => {
-      if (l !== headerLink) l.classList.add('is-inactive');
+      l.classList.toggle('is-active', l === headerLink);
+      l.classList.toggle('is-inactive', l !== headerLink);
     });
+    activeLink = headerLink;
   }
 
-  targetSection.scrollIntoView({ behavior: 'smooth' });
+  targetSection.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
+
+  link.blur();
 };
 
-headerLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    handleClickLink(link);
-  });
-});
-
-footerLinks.forEach(link => {
+[...headerLinks, ...footerLinks].forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     handleClickLink(link);
@@ -156,26 +156,20 @@ const observer = new IntersectionObserver(
       if (!entry.isIntersecting) return;
 
       const id = entry.target.id;
-      const link = document.querySelector(
-        `.header-nav-link[href="#${id}"]`
-      );
+      const link = document.querySelector(`.header-nav-link[href="#${id}"]`);
       if (!link) return;
 
-      if (isScrollingByClick) {
-        if (id !== scrollTargetId) return;
+      if (isScrollingByClick && id !== scrollTargetId) return;
 
-        headerLinks.forEach(l => l.classList.remove('is-inactive'));
-        isScrollingByClick = false;
-        scrollTargetId = null;
-        return;
-      }
+      isScrollingByClick = false;
+      scrollTargetId = null;
 
       activateLink(link);
     });
   },
-  { threshold: 0.3 }
+  {
+    threshold: 0.35,
+  }
 );
 
 sections.forEach(section => observer.observe(section));
-
-

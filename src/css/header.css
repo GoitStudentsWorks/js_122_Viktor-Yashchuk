@@ -1,4 +1,8 @@
 /* Styles for Mobile devices */
+section {
+  scroll-margin-top: 64px;
+}
+
 .header {
   min-width: 320px;
   position: sticky;
@@ -248,6 +252,10 @@
 
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
+  section {
+    scroll-margin-top: 72px;
+  }
+
   .burger-btn {
     display: none;
   }
@@ -329,6 +337,6 @@
   }
 
   .header-nav-link.is-inactive {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
