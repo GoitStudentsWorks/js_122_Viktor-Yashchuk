@@ -71,13 +71,13 @@ function renderPagination() {
       markup += pageButton(i);
     }
     if (totalPages > 3) {
-      markup += `<li class="dots">…</li>`;
+      markup += `<li class="dots" aria-label="Крапочки пагінації">…</li>`;
       markup += pageButton(totalPages);
     }
   } else if (currentPage === totalPages) {
     markup += pageButton(1);
     if (totalPages > 3) {
-      markup += `<li class="dots">…</li>`;
+      markup += `<li class="dots" aria-label="Крапочки пагінації">…</li>`;
     }
     for (let i = totalPages - 2; i <= totalPages; i++) {
       if (i > 1) {
@@ -88,7 +88,7 @@ function renderPagination() {
     markup += pageButton(1);
 
     if (currentPage > 3) {
-      markup += `<li class="dots">…</li>`;
+      markup += `<li class="dots aria-label="Крапочки пагінації"">…</li>`;
     }
 
     for (let i = currentPage - 1; i <= currentPage + 1; i += 1) {
@@ -98,7 +98,7 @@ function renderPagination() {
     }
 
     if (currentPage < totalPages - 2) {
-      markup += `<li class="dots">…</li>`;
+      markup += `<li class="dots" aria-label="Крапочки пагінації">…</li>`;
     }
 
     if (totalPages > 1) {
