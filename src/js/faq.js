@@ -111,7 +111,7 @@ const renderBlock = block => {
 const renderFaqItem = ({ q, blocks = [] }) => `
   <li class="ac">
     <h3 class="ac-header">
-      <button class="ac-trigger" type="button">
+      <button class="ac-trigger" type="button" aria-label="Питання">
         <span class="faq-question">${q}</span>
         <span class="faq-icon">
           <svg aria-hidden="true" width="24" height="24">
